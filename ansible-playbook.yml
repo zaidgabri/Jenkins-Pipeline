@@ -8,7 +8,7 @@
       ignore_errors: yes
 
     - name: remove stopped container
-      command: docker rm web-container
+      command: docker rm sp-container
       ignore_errors: yes
 
     - name: remove comingsoon-image
