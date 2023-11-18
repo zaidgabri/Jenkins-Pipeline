@@ -4,7 +4,7 @@
   connection: local
   tasks:
     - name: stop current running container
-      command: docker stop web-container
+      command: docker stop sp-container
       ignore_errors: yes
 
     - name: remove stopped container
