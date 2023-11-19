@@ -4,20 +4,23 @@
   connection: local
   tasks:
     - name: stop current running container
-      command: docker stop sp-container
+      command: docker stop web-container
       ignore_errors: yes
 
     - name: remove stopped container
-      command: docker rm sp-container
+      command: docker rm web-container
       ignore_errors: yes
 
     - name: remove comingsoon-image
-      command: docker rmi sp-image
+      command: docker rmi algabrizaid/jenkins-images
       ignore_errors: yes
 
     - name: build docker image using the Dockerfile
-      command:  docker build -t sp-image .
+      command: docker build -t algabrizaid/jenkins-images .
+
+    - name: Push Image to dockerhub
+      command: docker push algabrizaid/jenkins-images
 
     - name: run container
-      command: docker run -d --name sp-conatiner -p 5000:80  sp-image
+      command: docker run -d --name web-container -p 5000:80 algabrizaid/jenkins-images
 
